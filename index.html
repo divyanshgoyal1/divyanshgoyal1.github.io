@@ -6,24 +6,133 @@
 <title>Divyansh Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;font-weight:700;}
-body{background:#0d0d0d;color:#fff;height:100vh;overflow:hidden;}
-nav{position:absolute;top:18px;left:50%;transform:translateX(-50%);display:flex;gap:30px;font-size:18px;opacity:0;}
-nav a{color:#fff;text-decoration:none;transition:color 0.3s;font-weight:700;}
-nav a:hover{color:#00ffff;}
-#welcome{position:absolute;top:70px;left:20px;font-size:28px;white-space:nowrap;}
-#welcome::after{content:'|';display:inline-block;margin-left:2px;animation:blink 0.7s infinite;}
-@keyframes blink{0%,50%,100%{opacity:1;}25%,75%{opacity:0;}}
-.pic-section{position:absolute;top:150px;left:170px;width:350px;height:350px;opacity:0;transform:translateY(20px);}
-.pic{width:100%;height:100%;border-radius:20%;overflow:hidden;border:3px solid #00ffff;box-shadow:0 0 15px rgba(0,255,255,0.5);}
-.pic img{width:100%;height:100%;object-fit:cover;}
-.profile-text{position:absolute;top:170px;left:580px;opacity:0;}
-.profile-text p{font-size:22px;color:#fff;line-height:1.4;}
-.profile-text .animate-hi{display:inline-block;}
-.profile-text .animate-name{display:inline-block;font-weight:900;font-size:50px;}
-.profile-text .animate-avg{display:block;margin-top:10px;font-size:22px;}
-.profile-text .animate-avg .last-word{color:#00ffff;}
-.animate-avg::after {content:'|';display:inline-block;margin-left:2px;animation:blink 0.7s infinite;}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+}
+
+body {
+  background: #0d0d0d;
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Navbar */
+nav {
+  display: flex;
+  gap: 2rem;
+  font-size: 1.2rem;
+  justify-content: center;
+  margin-top: 1rem;
+  opacity: 0;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #00ffff;
+}
+
+/* Typewriter text */
+#welcome {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  text-align: center;
+  margin-top: 2rem;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#welcome::after {
+  content: '|';
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%,50%,100% {opacity:1;}
+  25%,75% {opacity:0;}
+}
+
+/* Profile Picture */
+.pic-section {
+  width: clamp(200px, 30vw, 350px);
+  height: clamp(200px, 30vw, 350px);
+  margin: 2rem auto 0;
+  opacity: 0;
+}
+
+.pic {
+  width: 100%;
+  height: 100%;
+  border-radius: 20%;
+  overflow: hidden;
+  border: 3px solid #00ffff;
+  box-shadow: 0 0 15px rgba(0,255,255,0.5);
+}
+
+.pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Profile Text */
+.profile-text {
+  text-align: center;
+  margin-top: 2rem;
+  opacity: 0;
+}
+
+.profile-text p {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  line-height: 1.4;
+}
+
+.animate-hi {
+  display: inline-block;
+}
+
+.animate-name {
+  display: inline-block;
+  font-weight: 900;
+  font-size: clamp(2rem, 8vw, 4rem);
+  margin-top: 0.5rem;
+  display: block;
+}
+
+.animate-avg {
+  display: block;
+  margin-top: 1rem;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+}
+
+.animate-avg .last-word {
+  color: #00ffff; /* neon blue */
+}
+
+.animate-avg::after {
+  content: '|';
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 0.7s infinite;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  #welcome { margin-top: 1rem; font-size: 5vw; }
+  .pic-section { width: 50vw; height: 50vw; }
+  .animate-name { font-size: 10vw; }
+  .animate-avg { font-size: 4vw; }
+}
 </style>
 </head>
 <body>
@@ -89,35 +198,22 @@ window.addEventListener('load', () => {
   // Divyansh Goyal bounce
   tl.from(nameText,{y:-100,opacity:0,duration:1,ease:"bounce.out"});
 
-  // Typewriter for "Just an average developer" after Divyansh
-  tl.add(() => {
-  const avgTextEl = document.querySelector(".animate-avg");
-  const fullSentence = "Just an average developer";
-  const lastWordStart = fullSentence.lastIndexOf("developer");
-  let i = 0;
+  // Typewriter for "Just an average developer"
+  tl.add(()=>{
+    const baseLine = "Just an average ";
+    const lastWord = "developer";
+    let i = 0;
 
-  function typeFull() {
-    if (i <= fullSentence.length) {
-      if (i < lastWordStart) {
-        // Type base text
-        avgTextEl.textContent = fullSentence.slice(0, i);
-      } else {
-        // Type last word with neon
-        avgTextEl.innerHTML =
-          fullSentence.slice(0, lastWordStart) +
-          '<span class="last-word">' +
-          fullSentence.slice(lastWordStart, i) +
-          '</span>';
+    function typeSentence() {
+      if(i <= lastWord.length){
+        avgText.innerHTML = baseLine + '<span class="last-word">'+lastWord.slice(0,i)+'</span>';
+        i++;
+        setTimeout(typeSentence, 100);
       }
-      i++;
-      setTimeout(typeFull, 50);
     }
-  }
 
-  typeFull();
-});
-
-
+    typeSentence();
+  });
 });
 </script>
 
