@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divyansh Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;font-weight:700;}
+body{background:#0d0d0d;color:#fff;height:100vh;overflow:hidden;}
+nav{position:absolute;top:18px;left:50%;transform:translateX(-50%);display:flex;gap:30px;font-size:18px;opacity:0;}
+nav a{color:#fff;text-decoration:none;transition:color 0.3s;font-weight:700;}
+nav a:hover{color:#00ffff;}
+#welcome{position:absolute;top:70px;left:20px;font-size:28px;white-space:nowrap;}
+#welcome::after{content:'|';display:inline-block;margin-left:2px;animation:blink 0.7s infinite;}
+@keyframes blink{0%,50%,100%{opacity:1;}25%,75%{opacity:0;}}
+.pic-section{position:absolute;top:150px;left:170px;width:350px;height:350px;opacity:0;transform:translateY(20px);}
+.pic{width:100%;height:100%;border-radius:20%;overflow:hidden;border:3px solid #00ffff;box-shadow:0 0 15px rgba(0,255,255,0.5);}
+.pic img{width:100%;height:100%;object-fit:cover;}
+.profile-text{position:absolute;top:170px;left:580px;opacity:0;}
+.profile-text p{font-size:22px;color:#fff;line-height:1.4;}
+.profile-text .animate-hi{display:inline-block;}
+.profile-text .animate-name{display:inline-block;font-weight:900;font-size:50px;}
+.profile-text .animate-avg{display:block;margin-top:10px;font-size:22px;}
+.profile-text .animate-avg .last-word{color:#00ffff;}
+.animate-avg::after {content:'|';display:inline-block;margin-left:2px;animation:blink 0.7s infinite;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#certifications">Certifications</a>
+  <a href="#experience">Experience</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<div id="welcome"></div>
+
+<div class="pic-section">
+  <div class="pic"><img src="pic.jpg" alt="pic"></div>
+</div>
+
+<div class="profile-text">
+  <p>
+    <span class="animate-hi">Hi, I am</span> <br>
+    <span class="animate-name">Divyansh Goyal</span> <br>
+    <span class="animate-avg"></span>
+  </p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+window.addEventListener('load', () => {
+  const nav = document.querySelector("nav");
+  const welcome = document.querySelector("#welcome");
+  const pic = document.querySelector(".pic-section");
+  const profileText = document.querySelector(".profile-text");
+  const hiText = document.querySelector(".animate-hi");
+  const nameText = document.querySelector(".animate-name");
+  const avgText = document.querySelector(".animate-avg");
+
+  const tl = gsap.timeline();
+
+  // Navbar fade in
+  tl.to(nav,{opacity:1,duration:1});
+
+  // Typewriter welcome
+  const welcomeText = "WELCOME TO MY PORTFOLIO";
+  let current = 0;
+  tl.add(()=>{
+    const interval = setInterval(()=>{
+      welcome.textContent += welcomeText[current];
+      current++;
+      if(current===welcomeText.length) clearInterval(interval);
+    },30);
+  });
+
+  // Profile picture fade + slide
+  tl.to(pic,{opacity:1,y:0,duration:1,delay:0.9});
+
+  // Profile text fade in
+  tl.to(profileText,{opacity:1,duration:0.5},"-=0.5");
+
+  // Hi, I am animation from left
+  tl.from(hiText,{x:-10,opacity:0,duration:1,ease:"power2.out"});
+
+  // Divyansh Goyal bounce
+  tl.from(nameText,{y:-100,opacity:0,duration:1,ease:"bounce.out"});
+
+  // Typewriter for "Just an average developer" after Divyansh
+  tl.add(() => {
+  const avgTextEl = document.querySelector(".animate-avg");
+  const fullSentence = "Just an average developer";
+  const lastWordStart = fullSentence.lastIndexOf("developer");
+  let i = 0;
+
+  function typeFull() {
+    if (i <= fullSentence.length) {
+      if (i < lastWordStart) {
+        // Type base text
+        avgTextEl.textContent = fullSentence.slice(0, i);
+      } else {
+        // Type last word with neon
+        avgTextEl.innerHTML =
+          fullSentence.slice(0, lastWordStart) +
+          '<span class="last-word">' +
+          fullSentence.slice(lastWordStart, i) +
+          '</span>';
+      }
+      i++;
+      setTimeout(typeFull, 50);
+    }
+  }
+
+  typeFull();
+});
+
+
+});
+</script>
+
+</body>
+</html>
