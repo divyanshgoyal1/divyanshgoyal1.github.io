@@ -14,11 +14,10 @@
       display:flex;
       justify-content:center;
       align-items:flex-start;
-      padding:80px 20px 40px; /* reduced top padding */
+      padding:80px 20px 40px;
     }
     .resume-container {width:100%;max-width:1000px;position:relative;}
 
-    /* Top card */
     .top-placeholder-card {
       background:#fff;
       border-radius:32px;
@@ -31,21 +30,13 @@
       height:auto;
       animation:cardFade 1s ease forwards;
       opacity:0;
-      margin-bottom:40px; /* minimal gap below top card */
+      margin-bottom:40px;
     }
     @keyframes cardFade {to{opacity:1;}}
 
-    .profile-section {
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:30px;
-      max-width:600px;
-      text-align:left;
-    }
+    .profile-section {display:flex;align-items:center;justify-content:center;gap:30px;max-width:600px;text-align:left;}
     .profile-info {display:flex;flex-direction:column;justify-content:center;}
 
-    /* Profile Picture Animation */
     .profile-pic {
       width:120px;height:120px;object-fit:cover;
       border-radius:20px;
@@ -56,94 +47,32 @@
     }
     @keyframes popIn {to{opacity:1;transform:scale(1) rotate(0deg);}}
 
-    /* "Hi I Am" */
-    .profile-info h2 {
-      margin:0;font-size:22px;font-weight:bold;color:#333;
-      opacity:0;transform:translateX(-50px);
-      animation:fadeLeft 0.8s ease forwards;
-      animation-delay:0.9s;
-    }
+    .profile-info h2 {margin:0;font-size:22px;font-weight:bold;color:#333;opacity:0;transform:translateX(-50px);animation:fadeLeft 0.8s ease forwards;animation-delay:0.9s;}
     @keyframes fadeLeft {to{opacity:1;transform:translateX(0);}}
 
-    /* "Divyansh Goyal" */
-    .profile-info h1 {
-      margin:5px 0 0;font-size:26px;color:#222;
-      opacity:0;transform:translateY(30px);
-      animation:fadeUp 0.8s ease forwards;
-      animation-delay:1.7s;
-    }
+    .profile-info h1 {margin:5px 0 0;font-size:26px;color:#222;opacity:0;transform:translateY(30px);animation:fadeUp 0.8s ease forwards;animation-delay:1.7s;}
     @keyframes fadeUp {to{opacity:1;transform:translateY(0);}}
 
-    /* Typewriter Effect for tagline */
-    .profile-info p {
-      margin:8px 0 0;font-size:16px;color:#666;
-      white-space:nowrap;overflow:hidden;border-right:2px solid #f39c12;
-      width:0ch;
-      opacity:0;
-      animation:typewriter 3s steps(30) forwards, blink 0.8s step-end infinite, revealHeart 0s forwards;
-      animation-delay:2.7s, 2.7s, 5.7s;
-      position:relative;
-    }
+    .profile-info p {margin:8px 0 0;font-size:16px;color:#666;white-space:nowrap;overflow:hidden;border-right:2px solid #f39c12;width:0ch;opacity:0;animation:typewriter 3s steps(30) forwards, blink 0.8s step-end infinite, revealHeart 0s forwards;animation-delay:2.7s, 2.7s, 5.7s;position:relative;}
     @keyframes typewriter {from{width:0;opacity:1;}to{width:26ch;opacity:1;}}
     @keyframes blink {50%{border-color:transparent;}}
-
-    /* Add heart after typing ends */
-    .profile-info p::after {
-      content:"❤";
-      color:#f39c12;
-      margin-left:5px;
-      opacity:0;
-      transition:opacity 0.5s ease;
-    }
+    .profile-info p::after {content:"❤";color:#f39c12;margin-left:5px;opacity:0;transition:opacity 0.5s ease;}
     .profile-info p.heart-shown::after {opacity:1;}
 
-    /* Animate resume content fade-up */
-    .resume {
-      background:#fff;
-      max-width:1000px;width:100%;
-      padding:40px;
-      border-radius:32px;
-      box-shadow:0 20px 50px rgba(0,0,0,0.1);
-      display:grid;gap:40px;
-      margin-top:0; /* removed large margin */
-      opacity:0;
-      transform:translateY(40px);
-      animation:resumeFadeUp 1s ease forwards;
-      animation-delay:3.5s;
-    }
-    @keyframes resumeFadeUp {to{opacity:1;transform:translateY(0);}}
+    .resume {background:#fff;max-width:1000px;width:100%;padding:40px;border-radius:32px;box-shadow:0 20px 50px rgba(0,0,0,0.1);display:grid;gap:40px;margin-top:0;opacity:0;transform:translateY(40px);transition:opacity 0.8s ease, transform 0.8s ease;}
+    .resume.visible {opacity:1;transform:translateY(0);}
 
-    /* Scroll animations */
     .section-title {opacity:0;transform:translateX(-50px);transition:all 0.8s ease;}
     .section-title.visible {opacity:1;transform:translateX(0);}
 
     .card {background:#fef9e7;padding:20px;border-radius:12px;box-shadow:0 10px 25px rgba(0,0,0,0.07);opacity:0;transform:scale(0.9);transition:all 0.8s ease;flex:1;min-width:200px;}
     .card.visible {opacity:1;transform:scale(1);} 
-    .card.dust::after {
-      content:"";
-      position:absolute;
-      top:0;left:0;right:0;bottom:0;
-      background:radial-gradient(circle, rgba(243,156,18,0.4) 1px, transparent 1px);
-      background-size:5px 5px;
-      opacity:0;animation:dust 1s forwards;
-    }
+    .card.dust::after {content:"";position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle, rgba(243,156,18,0.4) 1px, transparent 1px);background-size:5px 5px;opacity:0;animation:dust 1s forwards;}
     @keyframes dust {from{opacity:1;}to{opacity:0;}}
 
-    /* Skill tag overrides */
-    .card.skill-tag{
-      padding:8px 12px;
-      border-radius:999px;
-      min-width:0;
-      flex:0 0 auto;
-      background:#fff7e7;
-      box-shadow:0 6px 12px rgba(0,0,0,0.04);
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-    }
+    .card.skill-tag{padding:8px 12px;border-radius:999px;min-width:0;flex:0 0 auto;background:#fff7e7;box-shadow:0 6px 12px rgba(0,0,0,0.04);display:inline-flex;align-items:center;justify-content:center;}
     .card.skill-tag h3{margin:0;font-size:0.95rem;font-weight:700;color:#333;}
 
-    /* Responsive fix for mobile only */
     @media(max-width:600px){
       .profile-section {flex-direction:column;text-align:center;gap:15px;}
       .profile-info h1 {font-size:22px;}
@@ -154,6 +83,8 @@
       .skills-list{justify-content:flex-start;}
       .card.skill-tag{flex:0 0 auto;max-width:none;padding:6px 10px;}
       .card.skill-tag h3{font-size:0.9rem;}
+      .card.contact {flex:1 1 100%;max-width:100%;text-align:left;}
+      .contact a {display:inline;font-weight:600;}
     }
 
     .section{display:flex;flex-direction:column;gap:15px;}
@@ -168,21 +99,167 @@
     .contact a{display:block;margin-top:5px;font-weight:600;color:#2980b9;text-decoration:none;word-break:break-all;}
     .footer{text-align:center;font-size:0.8rem;color:#aaa;margin-top:20px;}
 
-    /* About Me animation */
-    .about-title, .about-desc {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
+    .about-title {opacity:0;transform:translateY(20px);transition:opacity 420ms ease, transform 420ms ease;}
+    .about-title.visible {opacity:1;transform:translateY(0);} 
+
+    .about-role {opacity:0;transform:translateY(16px);transition:opacity 420ms ease, transform 420ms ease;}
+    .about-role.visible {opacity:1;transform:translateY(0);} 
+
+    .about-desc {opacity:0;transform:translateY(8px);} 
+    .about-desc.dusty {animation:thanosDust 900ms cubic-bezier(.2,.9,.3,1) forwards;}
+
+    @keyframes thanosDust {
+      0% {opacity:0;filter:blur(6px);transform:translateY(8px) scale(1.025);}
+      60% {opacity:1;filter:blur(0);transform:translateY(0) scale(1);} 
+      100% {opacity:1;filter:none;transform:translateY(0) scale(1);} 
     }
-    .about-title.visible, .about-desc.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+
+
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 60px;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background: rgba(0,0,0,0.9);
+}
+.popup-content {
+  margin: auto;
+  display: block;
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.close {
+  position: absolute;
+  top: 20px; right: 40px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.close:hover { color: #f39c12; }
+.cert-img {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.cert-img:hover { transform: scale(1.02); }
+
+.cert-popup {
+  position: absolute;
+  z-index: 999;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  padding: 20px;
+  display: none;
+  max-width: 400px;
+}
+
+.cert-popup img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.cert-popup .close-popup {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #f39c12;
+}
+
+
+
+.timeline {
+  position: relative;
+  margin: 50px 0;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 8px; /* line position */
+  top: 0;
+  width: 4px;
+  height: 0; /* will grow dynamically */
+  background: #f39c12;
+  transition: height 0.4s ease;
+}
+
+.timeline-item {
+  position: relative;
+  margin-left: 60px;
+  margin-bottom: 50px;
+  opacity: 0;
+  transform: translateX(100px);
+  transition: all 0.6s ease;
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -40px;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #f39c12;
+  border: 3px solid #fff;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+.timeline-content {
+  background: #fef9e7;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+
+/* Responsive */
+@media(max-width: 768px){
+  .timeline {
+    padding-left: 25px;
+  }
+  .timeline-dot {
+    left: -25px;
+    top: 15px;
+  }
+}
+
+
+
+.timeline-content h3 {
+  margin: 0 0 5px;
+  color: #333;
+}
+
+.timeline-content p {
+  margin: 0 0 5px;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+
+
+
   </style>
 </head>
 <body>
   <div class="resume-container">
-    <!-- Top Intro Card -->
     <div class="top-placeholder-card">
       <div class="profile-section">
         <img src="pic.jpg" alt="Profile Picture of Divyansh Goyal" class="profile-pic">
@@ -194,13 +271,12 @@
       </div>
     </div>
 
-    <!-- Resume Content -->
     <div class="resume">
       <div class="header">
         <h1 class="about-title">About Me</h1>
-        <p class="about-desc"><b>Developer | Artist | Video Editor</b></p>
-        <p class="about-desc">Hi, I'm <b>Divyansh Goyal</b> <br> from India,Punjab,Amritsar <br>
-          My Focus lies in Linux systems, coding, and <br>real-world projects .</p>
+        <p class="about-role"><b>Developer | Artist | Video Editor</b></p>
+        <p class="about-desc">Hi, I'm <b>Divyansh Goyal</b> <br> from India, Punjab, Amritsar <br>
+          My Focus lies in Linux systems, coding, and <br>real-world projects.</p>
       </div>
 
       <div class="section">
@@ -226,14 +302,84 @@
         </div>
       </div>
 
+
+
+
+<div class="section">
+  <h2 class="section-title">Experience</h2>
+</div>
+
+
+
+
+
+<div class="timeline">
+  <div class="timeline-line"></div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-content">
+      <h3>Linux & Bash Scripting </h3>
+      <p><b>2 year experience </b><br> — 2024-25 </p>
+      <p> Worked on automation scripts, system tasks, and Linux projects.
+        
+      </p>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-content">
+      <h3>Web Applications & Websites</h3>
+      <p><b>2 year experience </b><br> — 2024-25</p>
+      <p>Built websites, web apps, and front-end/back-end projects.</p>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-content">
+      <h3>Android Development </h3>
+      <p><b>1 year experience</b> <br>— Ongoing</p>
+      <p>Built Android apps and mini projects, focusing on user experience and practical functionality.
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+      
       <div class="section">
-        <div class="section-title">Certifications</div>
-        <div class="card-list">
-          <div class="card"><h3>Created productivity system</h3></div>
-          <div class="card"><h3>Built Arch setup at age 14</h3></div>
-          <div class="card"><h3>Learning Bash & Git</h3></div>
-        </div>
-      </div>
+  <div class="section-title">Certifications</div>
+  <div class="card-list">
+    <div class="card cert-card">
+      <h3>Harvard University: Intr To CS</h3>
+      <img src="intrtocsbyharvard.jpg" 
+           alt="Harvard CS50 Certificate" 
+           class="cert-img">
+    </div>
+
+    <div class="card cert-card">
+      <h3>C# by Microsoft:</h3>
+      <p>Arriving Soon</p>
+    </div>
+  </div>
+</div>
+
+<!-- Popup Modal -->
+<div id="popup" class="popup">
+  <span class="close">&times;</span>
+  <img class="popup-content" id="popup-img">
+</div>
+
+
+
+
 
       <div class="section">
         <div class="section-title">Contact</div>
@@ -247,33 +393,184 @@
     </div>
   </div>
 
-  <script>
-    // Add heart after typewriter finishes
-    setTimeout(()=>{
-      document.getElementById("tagline").classList.add("heart-shown");
-    }, 5700);
+<script>
+/* Minimal patch of your original script:
+   - replayable About
+   - timeline grow/shrink on scroll down/up (stagger 300ms preserved)
+   - dynamic typewriter steps (keeps your 3s + delays)
+   - popup caption
+   - cards remain one-time
+*/
 
-    // Scroll reveal for sections
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          if(entry.target.classList.contains('section-title')){
-            entry.target.classList.add('visible');
-          }
-          if(entry.target.classList.contains('card')){
-            entry.target.classList.add('visible');
-            entry.target.classList.add('dust');
-            setTimeout(()=>entry.target.classList.remove('dust'),1000);
-          }
-          if(entry.target.classList.contains('about-title') || entry.target.classList.contains('about-desc')){
-            entry.target.classList.add('visible');
-          }
-        }
-      });
-    }, {threshold:0.2});
+const resume = document.querySelector('.resume');
+const aboutTitle = document.querySelector('.about-title');
+const aboutRole = document.querySelector('.about-role');
+const aboutDesc = document.querySelector('.about-desc');
 
-    document.querySelectorAll('.section-title, .card, .about-title, .about-desc').forEach(el => observer.observe(el));
-  </script>
+// --- dynamic typewriter (keeps original durations/delays, only updates steps) ---
+const taglineEl = document.getElementById('tagline');
+if (taglineEl) {
+  const chars = Math.max(1, taglineEl.textContent.trim().length);
+  // keep 3s duration and original delays (2.7s, 2.7s, 5.7s)
+  taglineEl.style.animation = `typewriter 3s steps(${chars}) forwards, blink 0.8s step-end infinite, revealHeart 0s forwards`;
+  taglineEl.style.animationDelay = '2.7s, 2.7s, 5.7s';
+}
+
+// --- About sequence (now replayable) ---
+function triggerAboutSequence() {
+  if (aboutTitle) aboutTitle.classList.remove('visible');
+  if (aboutRole) aboutRole.classList.remove('visible');
+  if (aboutDesc) aboutDesc.classList.remove('dusty');
+
+  // tiny tick before replaying so transitions re-trigger
+  setTimeout(() => {
+    if (aboutTitle) aboutTitle.classList.add('visible');
+    setTimeout(()=> { if (aboutRole) aboutRole.classList.add('visible'); }, 300);
+    setTimeout(()=> { if (aboutDesc) aboutDesc.classList.add('dusty'); }, 700);
+  }, 20);
+}
+
+// --- timeline helpers ---
+function setLineToItem(item) {
+  const line = document.querySelector('.timeline-line');
+  if (!line || !item) return;
+  const dot = item.querySelector('.timeline-dot');
+  if (!dot) return;
+  const lineRect = line.getBoundingClientRect();
+  const dotRect = dot.getBoundingClientRect();
+  const dotCenter = (dotRect.top - lineRect.top) + (dotRect.height / 2);
+  line.style.height = dotCenter + "px";
+}
+
+function getTimelineItemsInViewport() {
+  const items = Array.from(document.querySelectorAll('.timeline-item'));
+  return items.filter(it => {
+    const r = it.getBoundingClientRect();
+    return (r.top < window.innerHeight * 0.9 && r.bottom > 0);
+  });
+}
+
+// --- IntersectionObserver (based on your original) ---
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    const el = entry.target;
+    if (entry.isIntersecting) {
+      if (el.classList.contains('section-title')) el.classList.add('visible');
+
+      if (el.classList.contains('card')) {
+        // keep one-time behavior for cards
+        el.classList.add('visible');
+        el.classList.add('dust');
+        setTimeout(()=> el.classList.remove('dust'), 1000);
+      }
+
+      if (el.classList.contains('resume')) {
+        el.classList.add('visible');
+        // replay about sequence
+        triggerAboutSequence();
+      }
+
+      if (el.classList.contains('timeline-item')) {
+        // reveal only the timeline items currently in viewport & not yet visible
+        const items = getTimelineItemsInViewport();
+        const toReveal = items.filter(i => !i.classList.contains('visible'));
+        toReveal.forEach((item, index) => {
+          setTimeout(() => {
+            item.classList.add('visible');
+            setLineToItem(item);
+          }, index * 300); // original stagger preserved
+        });
+      }
+    } else {
+      // leaving viewport -> only reset things we want to replay (not cards)
+      if (el.classList.contains('section-title')) el.classList.remove('visible');
+
+      if (el.classList.contains('resume')) {
+        el.classList.remove('visible');
+        if (aboutTitle) aboutTitle.classList.remove('visible');
+        if (aboutRole) aboutRole.classList.remove('visible');
+        if (aboutDesc) aboutDesc.classList.remove('dusty');
+      }
+
+      if (el.classList.contains('timeline-item')) {
+        el.classList.remove('visible');
+        // recalc line to last remaining visible item, or shrink to 0
+        setTimeout(() => {
+          const vis = Array.from(document.querySelectorAll('.timeline-item.visible'));
+          if (vis.length) setLineToItem(vis[vis.length - 1]);
+          else {
+            const line = document.querySelector('.timeline-line');
+            if (line) line.style.height = '0px';
+          }
+        }, 80);
+      }
+
+      // NOTE: do NOT remove .visible from .card - keep one-time animations
+    }
+  });
+}, { threshold: 0.2 });
+
+// Observe same elements you originally observed
+document.querySelectorAll('.section-title, .card, .resume, .timeline-item')
+  .forEach(el => observer.observe(el));
+
+// --- Heart animation for tagline (preserved) ---
+setTimeout(() => {
+  const tag = document.getElementById("tagline");
+  if (tag) tag.classList.add("heart-shown");
+}, 5700);
+
+// --- Lightbox functionality with caption (non-invasive) ---
+const popup = document.getElementById("popup");
+const popupImg = document.getElementById("popup-img");
+const closeBtn = document.querySelector(".close");
+
+document.querySelectorAll(".cert-img").forEach(img => {
+  img.addEventListener("click", () => {
+    popup.style.display = "block";
+    popupImg.src = img.src;
+
+    // caption: prefer nearest <h3> inside same .cert-card, else alt text
+    const card = img.closest('.cert-card');
+    let caption = img.alt || '';
+    if (card) {
+      const h3 = card.querySelector('h3');
+      if (h3 && h3.textContent.trim()) caption = h3.textContent.trim();
+    }
+    let capEl = popup.querySelector('.popup-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'popup-caption';
+      capEl.style.color = '#fff';
+      capEl.style.textAlign = 'center';
+      capEl.style.marginTop = '10px';
+      popup.appendChild(capEl);
+    }
+    capEl.textContent = caption || 'Certificate';
+  });
+});
+
+closeBtn.onclick = () => { popup.style.display = "none"; };
+popup.onclick = e => { if (e.target === popup) popup.style.display = "none"; };
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") popup.style.display = "none";
+});
+
+// --- Prevent screenshot (best effort) kept intact ---
+document.addEventListener("contextmenu", e => e.preventDefault());
+document.addEventListener("keydown", e => {
+  if (e.key === "PrintScreen") {
+    if (popupImg) popupImg.style.visibility = "hidden";
+    alert("Screenshots are disabled on this site!");
+    setTimeout(()=> popupImg.style.visibility = "visible", 2000);
+  }
+  if (e.ctrlKey && (e.key === "s" || e.key === "u")) {
+    e.preventDefault();
+    alert("Saving/Viewing source is disabled!");
+  }
+});
+</script>
+
+
 </body>
 </html>
-
